@@ -1,0 +1,43 @@
+{% load static %}
+{% block content %}
+<html>
+<head>
+  <title>Mico Hospital</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+
+
+</head>
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		
+		<form action="{% url 'signup' %}" method="POST">
+		  {% csrf_token %}
+		{% if message %}
+        <h4 style="color: red">{{message}}</h4>
+		<div class="alert alert-success" role="alert">
+		</div>
+		{% endif %}
+
+			<h1>OTP Verification</h1><br>
+            <input type="text" name="email"  placeholder="Email Id" value="{{email}}"/><br>
+			<input type="text" name="enter your otp"  placeholder="Enter Your  OTP" /><br>
+			<button type="submit" value="SIGNUP" >Verify</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="{% static 'js/signup.js' %}"></script>
+</body>
+</html>
+{% endblock %}
